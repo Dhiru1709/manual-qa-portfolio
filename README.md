@@ -1,60 +1,74 @@
-# Manual QA Portfolio — Dhirendra Sinha
+# QA Portfolio - Dhirendra Sinha
 
-**QA Engineer | 3+ Years | Manual Testing | API Testing | Defect Management**
+**QA Engineer | Manual Testing | API Testing | Test Automation**
 
-📧 sinha.dhirendra17@gmail.com | 📍 Hyderabad, India | [LinkedIn](#)
+📧 sinha.dhirendra17@gmail.com | 📍 Hyderabad, India
 
 ---
 
 ## About This Portfolio
 
-This repository showcases my hands-on manual QA work across real-world enterprise projects. It includes test plans, test cases, bug reports, exploratory testing notes, and API testing samples — all structured the way I actually work on projects.
+This repository contains real-world QA artifacts from enterprise software testing projects. The content reflects my hands-on approach to quality assurance across complex, multi-module platforms covering trade lifecycle management, financial settlements, risk reporting, and payment workflows.
 
-I have tested enterprise platforms for large North American energy clients across trade lifecycle, risk reporting, settlements, and payment modules. The samples here reflect my real approach to quality.
+Everything here — test plans, test cases, bug reports, and automation samples is structured the way I actually work on projects, not template-based.
 
 ---
 
-## What's Inside
+## Repository Structure
 
-| Folder | What It Contains |
+```
+manual-qa-portfolio/
+├── Test-Plans/
+│   ├── Trade-Lifecycle-Test-Plan.md
+│   └── API-Testing-Strategy.md
+├── Test-Cases/
+│   ├── Trade-Entry-Test-Cases.md
+│   ├── Settlement-Module-Test-Cases.md
+│   └── Login-Auth-Test-Cases.md
+├── Bug-Reports/
+│   └── Sample-Bug-Reports.md
+├── Exploratory-Testing/
+│   └── Session-Notes.md
+├── API-Testing/
+│   ├── API-Test-Cases.md
+│   └── Postman-Collection-Guide.md
+└── Automation/
+    ├── Framework-Overview.md
+    └── Sample-Test-Scripts.md
+```
+
+---
+
+## Key Highlights
+
+- Zero production defects on major enterprise go-live after thorough pre-release manual and automated test coverage
+- 200+ defects tracked end-to-end in JIRA with full RCA and traceability in TestRail
+- 95%+ API test coverage maintained across multiple client environments simultaneously
+- Delivered QA across three enterprise client environments in parallel without missing a single sprint commitment
+- Built Selenium WebDriver automation framework from scratch — replaced 500+ manual regression cases and cut regression time by 80%
+
+---
+
+## Tools & Technologies
+
+| Category | Tools |
 |---|---|
-| `Test-Plans/` | Sample test plans with scope, approach, and entry/exit criteria |
-| `Test-Cases/` | Structured test cases for web app and API flows |
-| `Bug-Reports/` | Real-world style defect reports with RCA and reproduction steps |
-| `Exploratory-Testing/` | Session-based exploratory testing notes and charters |
-| `API-Testing/` | Postman collections and API test case samples |
+| Manual Testing | Functional, Regression, Exploratory, UAT, Smoke, E2E |
+| API Testing | Postman, REST Assured, SoapUI, Swagger |
+| Automation | Selenium WebDriver (Java), TestNG, Page Object Model |
+| CI/CD | GitHub Actions |
+| Test Management | JIRA, TestRail |
+| Database | MySQL — SQL queries for backend data validation |
+| Process | Agile/Scrum, SDLC, STLC, 2-week sprints |
 
 ---
 
-## Key Highlights From Real Projects
+## How I Approach Testing
 
-- **Zero production defects** on a major enterprise go-live after thorough manual and regression testing
-- **200+ defects** tracked end-to-end in JIRA with full RCA and traceability in TestRail
-- **95%+ API test coverage** maintained across three enterprise clients simultaneously
-- Delivered QA across **three client environments** in parallel without missing a single sprint commitment
-
----
-
-## Tools & Skills
-
-- **Testing Types:** Functional, Regression, Smoke, Sanity, Exploratory, Integration, UAT, E2E
-- **Bug Tracking:** JIRA, TestRail
-- **API Testing:** Postman, REST Assured, SoapUI
-- **Database:** MySQL — SQL queries for backend data validation
-- **Process:** Agile/Scrum, SDLC, STLC, 2-week sprints
-
----
-
-## How I Work
-
-1. Understand requirements and user stories before writing a single test case
-2. Write test plan covering scope, risks, approach, and entry/exit criteria
-3. Design test cases — happy paths, negative scenarios, boundary conditions, edge cases
+1. Read and analyse requirements - find gaps before writing a single test case
+2. Write test plan covering scope, risks, approach, entry and exit criteria
+3. Design test cases - happy paths, negative scenarios, boundary conditions, edge cases
 4. Execute smoke first, then functional, then regression
-5. Log every defect with clear reproduction steps, expected vs actual, severity, and SQL proof where needed
-6. Track defects to closure — not just logged and forgotten
-7. Sign off only after full verification
-
----
-
-> *"Quality is not an act, it is a habit."*
+5. Log every defect with clear reproduction steps, expected vs actual, severity, SQL proof where needed
+6. Track defects to closure
+7. Sign off only after full verification and stakeholder approval
