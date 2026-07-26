@@ -1,144 +1,150 @@
 # Selenium Automation Framework
 
-A test automation framework I built to reduce manual regression effort on a large enterprise application. The project started as a way to automate repetitive test cycles that were taking 2–3 days every sprint — after setting this up, we got that down to a few hours.
+This repository contains a sample Selenium automation framework built using Java and TestNG following the Page Object Model (POM) design pattern.
 
-Built with Java and Selenium WebDriver, following Page Object Model so the test logic stays clean and the page interactions are easy to update when the UI changes.
+The framework demonstrates how I organize reusable automation scripts for UI regression testing while keeping the code maintainable and scalable.
 
----
-
-## Why I Built This
-
-We had a growing regression suite that was eating up most of the sprint just to execute manually. I started by automating the most repetitive flows — login, trade entry, and status checks — and expanded from there. The goal was always to free up time for exploratory and edge case testing, not to replace it.
+> **Note:** This framework is a representative implementation created to showcase automation practices. It does not contain proprietary company code or client-specific test scripts.
 
 ---
 
-## Tech Stack
+# Technology Stack
 
-- Java
-- Selenium WebDriver
-- TestNG
-- Maven
-- WebDriverManager
+| Component | Technology |
+|-----------|------------|
+| Language | Java |
+| Automation Tool | Selenium WebDriver |
+| Test Framework | TestNG |
+| Build Tool | Maven |
+| Design Pattern | Page Object Model (POM) |
+| Version Control | Git |
+| CI/CD | GitHub Actions |
 
 ---
 
-## Project Structure
+# Framework Structure
 
-```text
-selenium-framework/
-├── src/
-│   ├── main/java/
-│   │   ├── base/          # WebDriver setup and teardown
-│   │   ├── pages/         # Page Object classes
-│   │   └── utils/         # Helpers — config reader, Excel reader, wait utilities
-│   └── test/java/
-│       └── tests/         # TestNG test classes
-├── config/
-│   └── config.properties  # Environment URLs, browser, credentials
-├── test-data/
-│   └── TestData.xlsx      # Data-driven test inputs
+```
+Automation_Framework
+│
+├── src
+│   ├── main
+│   │   ├── pages
+│   │   ├── utils
+│   │   └── config
+│   │
+│   └── test
+│       ├── base
+│       ├── tests
+│       └── data
+│
+├── screenshots
+├── reports
 ├── testng.xml
-└── pom.xml
+├── pom.xml
+└── README.md
 ```
 
 ---
 
-## Key Design Decisions
+# Framework Features
 
-**Page Object Model** — Each page has its own class with locators and actions. When a locator breaks (which happens often in active development), I update one place instead of hunting through every test.
-
-**Data-Driven Testing** — Test data lives in Excel files outside the code. This made it easy to add new data combinations without touching the test logic, and non-technical team members could update test data themselves.
-
-**Config via Properties File** — Environment URLs, browser choice, and credentials are all in `config.properties`. Switching between QA and staging is a one-line change, not a code change.
-
-**WebDriverManager** — No manual driver downloads or version mismatch issues. It handles the driver setup automatically, which saved a lot of setup headaches especially when onboarding.
+- Page Object Model (POM)
+- Reusable WebDriver setup
+- Explicit Wait implementation
+- Centralized configuration
+- Cross-browser support (Chrome & Edge)
+- Screenshot capture on failure
+- TestNG execution
+- Maven build support
+- GitHub Actions ready
 
 ---
 
-## How to Run
+# Sample Test Flow
+
+```
+Launch Browser
+
+↓
+
+Login
+
+↓
+
+Navigate to Module
+
+↓
+
+Perform Action
+
+↓
+
+Validate Result
+
+↓
+
+Logout
+
+↓
+
+Close Browser
+```
+
+---
+
+# Sample Test Scenarios
+
+- Verify user login
+- Verify customer creation
+- Verify customer update
+- Verify search functionality
+- Verify logout
+- Verify validation messages
+
+---
+
+# Framework Design Principles
+
+- Reusable page objects
+- Maintainable test scripts
+- Clear separation of test logic and page elements
+- Easy addition of new test cases
+- Reduced code duplication
+
+---
+
+# Execution
+
+### Run all tests
 
 ```bash
-# Run full regression suite
 mvn clean test
+```
 
-# Run a specific TestNG suite
-mvn clean test -DsuiteXmlFile=testng.xml
+### Run TestNG suite
 
-# Run specific test group
-mvn clean test -Dgroups=smoke
+```bash
+mvn test
 ```
 
 ---
 
-## Login Page Object
+# Future Enhancements
 
-```java
-public class LoginPage {
-    private WebDriver driver;
-
-    private By usernameField = By.id("username");
-    private By passwordField = By.id("password");
-    private By loginButton = By.id("login-btn");
-    private By errorMessage = By.className("error-msg");
-
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
-    }
-
-    public void login(String username, String password) {
-        driver.findElement(usernameField).sendKeys(username);
-        driver.findElement(passwordField).sendKeys(password);
-        driver.findElement(loginButton).click();
-    }
-
-    public String getErrorMessage() {
-        return driver.findElement(errorMessage).getText();
-    }
-
-    public boolean isErrorDisplayed() {
-        return driver.findElements(errorMessage).size() > 0;
-    }
-}
-```
+- Data-Driven Testing
+- Parallel Execution
+- Extent Reports
+- Docker Integration
+- Selenium Grid
+- BrowserStack Integration
 
 ---
 
-## Data-Driven Test — Login Flow
+# Deliverables
 
-```java
-@Test(dataProvider = "loginData")
-public void testLogin(String username, String password, String expectedResult) {
-    LoginPage loginPage = new LoginPage(driver);
-    loginPage.login(username, password);
-
-    if (expectedResult.equals("success")) {
-        Assert.assertTrue(dashboardPage.isDisplayed(), "Login failed for: " + username);
-    } else {
-        Assert.assertTrue(loginPage.isErrorDisplayed(), "Error not shown for invalid login");
-    }
-}
-
-@DataProvider(name = "loginData")
-public Object[][] getLoginData() {
-    return ExcelReader.getData("TestData.xlsx", "Login");
-}
-```
-
----
-
-## What's Next
-
-A few things I want to add when I get time:
-
-- Parallel execution across browsers using TestNG's parallel config
-- Extent Reports for better visual reporting after each run
-- GitHub Actions integration for automatic runs on every PR
-- Cross-browser testing — currently Chrome only, want to add Firefox and Edge
-
-These are in progress — the core framework is stable and running in CI via Jenkins right now.
-
----
-
-## Notes
-
-The framework covers UI regression for the main application flows. API test automation is handled separately using REST Assured — that repo is linked in my profile if you want to look at both together.
+- Selenium Framework
+- Sample Test Scripts
+- Page Objects
+- TestNG Suite
+- Execution Reports
